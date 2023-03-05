@@ -15,7 +15,9 @@ class Curso(models.Model):
     NIVEl = (("B", "Básico"), ("I", "Intermediário"), ("A", "Avançado"))
     descricao = models.CharField(max_length=100)
     codigo_curso = models.CharField(max_length=10)
-    nivel = models.CharField(max_length=1, choices=NIVEl, default="B", blank=False, null=False)
+    nivel = models.CharField(
+        max_length=1, choices=NIVEl, default="B", blank=False, null=False
+    )
 
     def __str__(self):
         return self.descricao
@@ -25,6 +27,6 @@ class Matricula(models.Model):
     PERIODO = (("M", "Matutino"), ("V", "Vespertino"), ("N", "Noturno"))
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    periodo = models.CharField(max_length=1, choices=PERIODO, default="M", blank=False, null=False)
-
-    
+    periodo = models.CharField(
+        max_length=1, choices=PERIODO, default="M", blank=False, null=False
+    )
